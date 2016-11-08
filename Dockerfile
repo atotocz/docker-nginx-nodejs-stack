@@ -14,6 +14,7 @@ RUN apt-get -qqy update && \
 WORKDIR /var/www/html
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
 EXPOSE 80
+EXPOSE 8080
 
 COPY rootfs /
 
