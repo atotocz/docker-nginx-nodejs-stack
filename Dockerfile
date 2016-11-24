@@ -5,7 +5,7 @@ ENV NODE_ENV=production \
 	NODE_PORT=3000
 
 RUN apt-get -qqy update && \
-	apt-get install -qqy nginx supervisor libelf1 && \
+	apt-get install -qqy nginx supervisor libelf1 vim && \
 	apt-get clean && \
 	npm --loglevel=silent install -g yarn pm2@latest && \
 	curl -sL https://getsentry.com/get-cli/ | bash && \
