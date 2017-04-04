@@ -7,7 +7,7 @@ ENV NODE_ENV=production \
 RUN apt-get -qqy update && \
 	apt-get install -qqy nginx supervisor libelf1 vim && \
 	apt-get clean && \
-	npm --loglevel=silent install -g yarn@0.20.3 pm2@latest && \
+	npm install -g yarn@0.20.3 pm2@latest && \
 	curl -sL https://getsentry.com/get-cli/ | bash && \
 	rm -rf /var/www/html/*
 
