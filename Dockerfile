@@ -1,4 +1,4 @@
-FROM node:6.9.1
+FROM node:7.8.0
 
 ENV NODE_ENV=production \
 	DEBIAN_FRONTEND=noninteractive \
@@ -7,7 +7,7 @@ ENV NODE_ENV=production \
 RUN apt-get -qqy update && \
 	apt-get install -qqy nginx supervisor libelf1 vim && \
 	apt-get clean && \
-	npm --loglevel=silent install -g yarn pm2@latest && \
+	npm --loglevel=silent install -g yarn@0.20.3 pm2@latest && \
 	curl -sL https://getsentry.com/get-cli/ | bash && \
 	rm -rf /var/www/html/*
 
@@ -17,4 +17,3 @@ EXPOSE 80
 EXPOSE 8080
 
 COPY rootfs /
-
