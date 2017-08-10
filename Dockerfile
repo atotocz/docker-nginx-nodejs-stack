@@ -1,4 +1,4 @@
-FROM node:8.1.2
+FROM node:8.2.1
 
 ENV NODE_ENV=production \
     DEBIAN_FRONTEND=noninteractive \
@@ -10,7 +10,9 @@ RUN apt-get -qqy update && \
     apt-get clean && \
     yarn global add pm2@$PM2_VERSION sentry-cli-binary && \
     rm -rf /var/www/html/* && \
+    echo "=== yarn version: ===" && \
     yarn --version && \
+    echo "=== sentry-cli version: ===" && \
     sentry-cli --version
 
 WORKDIR /var/www/html
