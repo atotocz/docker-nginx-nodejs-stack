@@ -12,10 +12,9 @@ RUN apt-get -qqy update && \
     curl -fSLO --compressed "https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz" && \
     curl -fSLO --compressed "https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz.asc" && \
     gpg --batch --verify yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz && \
-    rm -rf /opt/yarn/* /opt/yarn/.* && \
+    rm -rf /opt/yarn && \
+    mkdir -p /opt/yarn && \
     tar -xzf yarn-v$YARN_VERSION.tar.gz -C /opt/yarn --strip-components=1 && \
-    ln -s /opt/yarn/bin/yarn /usr/local/bin/yarn && \
-    ln -s /opt/yarn/bin/yarn /usr/local/bin/yarnpkg && \
     rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz && \
     yarn global add pm2@$PM2_VERSION sentry-cli-binary && \
     rm -rf /var/www/html/* && \
